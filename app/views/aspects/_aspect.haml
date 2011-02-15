@@ -1,12 +1,11 @@
-%li{:data=>{:guid=>aspect.id}, :class => ("dull" if contacts.length == 0)}
-  .right
-    %b
-      = link_to t('contacts', :count => contacts.count), edit_aspect_path(aspect), :rel => 'facebox'
-  %b
-    = link_to aspect.name, edit_aspect_path(aspect), :rel => 'facebox'
-  %br
+%li{:data=>{:guid=>aspect.id}, :class => ("dull" if contacts.length == 0), :class => ("selected" if @object_aspect_ids.include?(aspect.id))}
+  = link_to 'edit', edit_aspect_path(aspect), :rel => 'facebox', :class => 'edit'
 
-  - if contacts.length > 0
-    .contacts
-      - for contact in contacts[0..15]
-        = person_image_link(contact.person)
+  = link_for_aspect(aspect, :class => 'aspect_selector')
+
+  - if contacts.size > 0
+    %ul.aspect_contacts
+      - for contact in contacts[0..3]
+        %li
+          = person_image_tag(contact.person, :thumb_small)
+          = link_to contact.person.name, contact.person, :class => 'contact_name'

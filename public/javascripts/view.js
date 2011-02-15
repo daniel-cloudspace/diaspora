@@ -132,14 +132,6 @@ var View = {
   },
 
   tooltips: {
-    addAspect: {
-      bind: function() {
-        $(".add_aspect_button", "#aspect_nav").tipsy({
-          gravity:"w"
-        });
-      }
-    },
-
     aspect_nav: {
       bind: function() {
         $("a", "#aspect_nav").tipsy({

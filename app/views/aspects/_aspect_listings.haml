@@ -4,16 +4,14 @@
 
 = hidden_field_tag :contact_json, @selected_contacts.map{|contact| contact.person}.to_json
 
-%h4
-  .right
-    = link_to t('contacts', :count => contacts.count), aspects_manage_path, :title => t('aspects.manage.manage_aspects')
-
-  = aspects.count
-  - if aspects.count == 1
-    = t('_aspect')
-  - else
-    = t('_aspects')
-
-%ul
-  - for aspect in aspects
+%ul#aspect_nav
+  %li{:class => ('selected' if @aspect == :all)}
+    = link_to 'All Aspects', aspects_path, :class => 'home_selector'
+  - for aspect in @all_aspects
     = render 'aspects/aspect', :aspect => aspect, :contacts => aspect.contacts.reject{|x| x.pending == true}
+  %li
+    = link_to '+ add new aspect', '#add_aspect_pane', :class => "add_aspect_button", :rel => 'facebox'
+
+  .facebox_content
+    #add_aspect_pane
+      = render "aspects/new_aspect"

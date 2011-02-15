@@ -4,7 +4,7 @@
 
 .container{:style => "position:relative;"}
   - if current_user
-    = link_to image_tag('logo_small.png', :height => "16px", :width => "161px", :class => "diaspora_header_logo"), root_path
+    = link_to image_tag('logo_no_alpha.png', :height => 16, :width => 98, :class => "diaspora_header_logo"), root_path
   - else
     = link_to image_tag('logo_large.png', :height => "32px", :width => "321px", :class => "diaspora_header_logo"), root_path
 
@@ -39,18 +39,3 @@
       %li= link_to t('.account_settings'), edit_user_path(current_user)
       %li= link_to t('.logout'), destroy_user_session_path
 
-    -unless @landing_page
-      %ul#aspect_nav
-        %li{:class => ('selected' if @aspect == :all)}
-          = link_to t('_home'), aspects_path, :class => 'home_selector'
-
-        - for aspect in @all_aspects
-          %li{:data=>{:guid=>aspect.id}, :class => ("selected" if @object_aspect_ids.include?(aspect.id))}
-            = link_for_aspect(aspect, :class => 'aspect_selector', :title => t('contacts', :count => aspect.aspect_memberships.length))
-
-        %li
-          = link_to '+', '#add_aspect_pane', :class => "add_aspect_button", :title => t('aspects.manage.add_a_new_aspect'), :rel => 'facebox'
-
-      .facebox_content
-        #add_aspect_pane
-          = render "aspects/new_aspect"

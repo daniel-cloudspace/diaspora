@@ -9,7 +9,7 @@ $background: rgb(252,252,252)
 body
   :padding 2em
   :margin 0
-    :top 60px
+    :top 35px
   :background-color $background
 a
   :color #107FC9
@@ -127,22 +127,20 @@ header
     :color #111
     :color rgba(15,15,15,0.90)
 
-  :background -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(30,30,30,0.85)), to(rgba(20,20,20,1)))
-  :background -moz-linear-gradient(top, rgba(30,30,30,0.85), rgba(20,20,20,0.98))
-
   :-webkit-box-shadow 0 1px 3px #111
   :-moz-box-shadow 0 1px 2px #111
   :box-shadow 0 1px 3px #222
 
 
   :padding 0
-    :top 2px
+    :top 4px
   :color #CCC
 
   :position fixed
   :width 100%
   :top 0
   :left 0
+  :height 30px
 
   a
     :color #CCC
@@ -171,15 +169,8 @@ header
       :left 30px
       :right 5px
     :margin 0
-      :top -2px
+      :top -6px
       :right -5px
-
-    :background
-      :color #000
-
-    :-webkit-border-radius 5px
-    :-moz-border-radius 5px
-    :border-radius 5px
 
     :position absolute
     :display inline
@@ -243,7 +234,7 @@ header
   :position relative
   :top 4px
   :margin
-    :right 1em
+    :right 100px
 
 .stream
   .stream_element
@@ -310,6 +301,8 @@ header
 
   .from
     :display inline-block
+    :margin
+      :left -5px
 
   &.profile
     .from
@@ -319,6 +312,10 @@ header
   h4,
   h5
     :display inline-block
+
+  h3
+    :margin
+      :bottom -1px
 
   &.show
     a
@@ -642,12 +639,8 @@ ul.show_comments
 
 .profile_photo
   img
-    :height 300px
-    :width 300px
-
-    :-webkit-box-shadow 0 2px 2px #333
-    :-moz-box-shadow 0 2px 2px #333
-    :box-shadow 0 2px 2px #333
+    :width 150px
+    :height 150px
 
 #profile
   h3
@@ -846,7 +839,7 @@ label
 
   input[type='text'],
   textarea
-    :width 435px
+    :width 415px
     :margin 0
 
   textarea
@@ -883,31 +876,11 @@ label
     :margin
       :top 1em
 
-  #click_to_share
-    :position relative
-    :padding 1em
-      :top 0
-    :margin
-      :bottom -16px
-
-    span
-      :margin
-        :left 12px
-      :font
-        :weight bold
-      :color #444
-
-    img
-      :display inline
-      :position absolute
-      :top 0
-      :left 0px
-
   #file-upload
     :z-index 10
     :float right
     :height 42px
-    :width 103px
+    :width 85px
     :margin 0
 
     :-webkit-border-radius 3px
@@ -1036,85 +1009,109 @@ label
       :height 100px
       :width 100px
 
-ul#aspect_nav
-  :margin
-    :top 3px
-    :bottom 2px
-  :bottom 0
-  :color #000
-
-  :position relative
+ul.aspect_contacts
+  :display none
+  :margin 0
   :padding 0
-    :bottom 3px
-  :margin
-    :bottom 0
+    :left 6px
 
-  a:hover
-    :text
-      :decoration none
+  a.contact_name
+    :padding
+      :left 40px
 
-  > li
-    :display inline
-    :padding 1px 8px
-    :margin 0
-      :right 2px
+  img.avatar
+    :position absolute
+    :width 16px
+    :height 16px
+    :top 4px
+    :left 6px
 
-    :-webkit-border-radius 2px
-    :-moz-border-radius 2px
-    :border-radius 2px
+ul#aspect_nav
+  :padding 0
+  :margin 0
 
-    :text-shadow 0 1px 0 #444
-
-    :color #999
-    :max-width 120px
-    :overflow hidden
-    :text-overflow ellipsis
-
-    .aspect_selector_edit
-      :position absolute
-      :margin
-        :left -3px
-      :display none
-      :color #555
-
-      &:hover
-        :color #eee
+  li
+    :position relative
 
     &:hover
+      a.edit
+        :display block
+
+  a:not(.edit)
+    :display block
+    :width 100%
+    :height 100%
+    :color #888
+    :padding 3px 5px
+    :border
+      :bottom 1px solid #eee
+
+  li:hover
+    a.aspect_selector,
+    a.home_selector,
+    a.add_aspect_button
+      :text
+        :decoration none
+      :color #555
       :background
-        :color #000
+        :color #f9f9f9
+
+  a.home_selector
+    :margin
+      :bottom 12px
+
+  a.add_aspect_button
+    :color #bbb
+    :border
+      :bottom none
+
+  a.home_selector
+    :border
+      :bottom 1px solid #999
+
+  a.edit
+    :display none
+    :position absolute
+    :right -8px
+    :top 4px
+    :font
+      :size smaller
+    :padding 1px 4px
+    :background
       :color #eee
+    :color #aaa
 
-      .aspect_selector_edit
-        :display inline
+    :border-radius 3px
 
-    &.selected
-      :text-shadow 0 1px 0 #fff
+    &:hover
+      :color #444
+      :background
+        :color #ddd
+      :text
+        :decoration none
+
+    &:active
+      :top 5px
+
+  li.selected
+    ul.aspect_contacts
+      :display block
+
+    a:not(.edit)
+      :color $blue
+    a.aspect_selector,
+    a.home_selector
       :font
         :weight bold
-      :background
-        :color rgb(235,235,235)
-
-      :border
-        :bottom 1px solid #fff
-
-      :color #444
-
-      .aspect_selector_edit
-        :margin
-          :left -4px
-        :color #777
-        &:hover
-          :color #999
 
       &:hover
-        :color #888
-      a
-        :color #000
+        :color $blue
 
-  .new_requests
-    :color red
-
+ul#aspect_nav
+  li
+    a.contact_name
+      :padding
+        :left !important 40px
 
 #global_search
   :display inline
@@ -1142,8 +1139,7 @@ ul#aspect_nav
         :background-color #eee
 
       &.active
-        :background-color #fafafa
-
+        :background-color #fff
 
     input[type='search']
       :width 250px
@@ -1328,19 +1324,6 @@ ul#settings_nav
 .settings_pane
   :display none
 
-.contact_pictures,
-#aspect_listings li
-  img
-    :margin
-      :right 2px
-      :bottom 0px
-    :width 29px
-    :height 29px
-
-  h5
-    :margin
-      :bottom 6px
-
 .contact_pictures.horizontal
   img
     :margin-right -5px
@@ -1351,7 +1334,6 @@ ul#settings_nav
 #aspect_list
   :margin 0
   :padding 0
-
 
 .dull
   :color #aaa
@@ -1365,19 +1347,6 @@ ul#settings_nav
   :margin
     :bottom 24px
 
-#aspect_listings
-  .contacts
-    :margin
-      :top 6px
-
-  ul
-    :padding 0
-    :margin 0
-    > li
-      :position relative
-      :padding 8px 0
-      :border
-        :bottom 1px solid #ddd
 
 .floating.empty_message
   :margin
@@ -1456,8 +1425,7 @@ input[type="search"]
 
 #show_text
   :font
-    :size 24px
-    :family "Warnock Pro", "Goudy Old Style","Palatino","Book Antiqua", Georgia, serif
+    :size 18px
 
   .time
     :color #888
@@ -1508,7 +1476,7 @@ ul.aspects
 
 .floating
   :position relative
-  :padding 12px
+  :padding 50px
   :margin
     :bottom 2em
   :background
@@ -2323,10 +2291,6 @@ ul.show_comments
 
   :padding
     :left 60px
-
-#aspect_listings
-  :margin
-    :top 24px
 
 #new_notifications,
 #new_requests
