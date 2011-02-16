@@ -234,7 +234,7 @@ header
   :position relative
   :top 4px
   :margin
-    :right 100px
+    :right 12px
 
 .stream
   .stream_element
@@ -242,6 +242,7 @@ header
       :family 'arial', 'helvetica', sans-serif
     :padding 10px 14px
       :right 75px
+      :left 0
     :min-height 50px
     :border
       :bottom 1px solid #ddd
@@ -606,7 +607,7 @@ ul.show_comments
           :size 1em
         :margin
           :bottom -3px
-        :width 388px
+        :width 363px
         :min-height 23px
 
       p
@@ -669,8 +670,20 @@ a.paginate, #infscr-loading
   :width 100%
   :cursor pointer
 
+  :background
+    :color lighten($blue,48%)
+
+  :border 1px solid lighten($blue,40%)
+
+  :border-radius 3px
+  :color lighten($blue,20%)
+
   &:hover
-    :border 1px solid #1C6D99
+    :text
+      :decoration none
+    :background
+      :color lighten($blue,44%)
+    :border 1px solid lighten($blue,35%)
 
 #main_stream .pagination
   :display none
@@ -807,8 +820,8 @@ label
   :margin
     :bottom 10px
     :top 0
-  :padding 12px
-    :top 1px
+  :padding
+    :bottom 12px
   :top 0
 
   :border
